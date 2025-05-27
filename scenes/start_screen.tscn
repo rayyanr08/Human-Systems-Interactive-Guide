@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2vwojuw48wcm"]
+
+[ext_resource type="Script" path="res://scripts/Start Screen.gd" id="1_xx18l"]
+
+[sub_resource type="Theme" id="Theme_gdgsi"]
+
+[node name="Start Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xx18l")
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 211.0
+offset_right = 778.0
+offset_bottom = 423.0
+theme = SubResource("Theme_gdgsi")
+text = "Start Interactive Guide"
+
+[connection signal="pressed" from="Start" to="." method="_on_start_pressed"]

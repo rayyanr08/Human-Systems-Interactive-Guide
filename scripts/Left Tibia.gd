@@ -11,7 +11,7 @@ func _process(delta):
 	pass
 
 
-func _on_femur_2_input_event(camera, event, position, normal, shape_idx):
+func _on_tibia_2_input_event(camera, event, position, normal, shape_idx):
 		if event is InputEventMouseButton:
 			if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-				print("YOU CLICKED THE LEFT FEMUR")
+				print("YOU CLICKED THE LEFT TIBIA")

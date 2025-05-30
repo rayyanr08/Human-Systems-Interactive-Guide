@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0xr4hxr0fr0r"]
+[gd_scene load_steps=29 format=3 uid="uid://b0xr4hxr0fr0r"]
 
 [ext_resource type="ArrayMesh" uid="uid://b4htxst37egel" path="res://assets/BONES_OUT.OBJ" id="1_n2ck8"]
 [ext_resource type="Script" path="res://scripts/Right Femur.gd" id="2_ccgr0"]
+[ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_wo2kx"]
 [ext_resource type="Script" path="res://scripts/Skull.gd" id="3_01wow"]
 [ext_resource type="Script" path="res://scripts/Left Femur.gd" id="3_e6bxh"]
 [ext_resource type="Script" path="res://scripts/Right Tibia.gd" id="5_cy7dt"]
@@ -13,6 +14,8 @@
 [ext_resource type="Script" path="res://scripts/Right Ulna.gd" id="11_2w8dn"]
 [ext_resource type="Script" path="res://scripts/Right Radius.gd" id="12_q0778"]
 [ext_resource type="Script" path="res://scripts/Left Radius.gd" id="13_pg2pt"]
+
+[sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_w8gp7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ma1fy"]
 radius = 2.0
@@ -58,7 +61,7 @@ radius = 1.63353
 height = 23.3722
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_70f8w"]
-radius = 2.58778
+radius = 1.63497
 height = 27.6164
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_23rvw"]
@@ -75,9 +78,12 @@ mesh = ExtResource("1_n2ck8")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.52047, 83.5179, 131.31)
+transform = Transform3D(0.723558, 0, 0.690264, 0, 1, 0, -0.690264, 0, 0.723558, 200.308, 93.715, 207.508)
+attributes = SubResource("CameraAttributesPhysical_w8gp7")
+script = ExtResource("2_wo2kx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="CharacterBody3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.96682, 0, -13.3059)
 light_color = Color(0.981186, 0.894829, 0.88197, 1)
 
 [node name="Femur(1)" type="Area3D" parent="CharacterBody3D"]
@@ -87,11 +93,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 76, 0)
 transform = Transform3D(0.998985, -0.0450491, 0, 0.0450491, 0.998985, 0, 0, 0, 1, -2.48315, -8.1788, -7.88307)
 shape = SubResource("CapsuleShape3D_ma1fy")
 script = ExtResource("2_ccgr0")
-
-[node name="Label3D" type="Label3D" parent="CharacterBody3D/Femur(1)"]
-transform = Transform3D(0.998443, 0, 0.0557867, 0, 1, 0, -0.0557867, 0, 0.998443, 44.9217, -4.91626, 0)
-text = "This is the femur"
-font_size = 965
 
 [node name="Femur(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
@@ -177,7 +178,7 @@ script = ExtResource("12_q0778")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 98, -17)
 
 [node name="Left Ulna" type="CollisionShape3D" parent="CharacterBody3D/Ulna(2)"]
-transform = Transform3D(0.946268, -0.316929, -0.0642885, 0.317586, 0.948229, 0, 0.0609602, -0.0204171, 0.997931, 0.815125, 1.2459, 1.29301)
+transform = Transform3D(0.966274, -0.249404, -0.0641291, 0.250197, 0.968184, 0.00452484, 0.0609602, -0.0204171, 0.997931, 1.09364, 1.2459, 1.05555)
 shape = SubResource("CapsuleShape3D_70f8w")
 
 [node name="Radius(2)" type="Area3D" parent="CharacterBody3D"]
@@ -188,8 +189,8 @@ transform = Transform3D(0.963106, -0.269122, 0, 0.269121, 0.963103, 0.0026529, -
 shape = SubResource("CapsuleShape3D_23rvw")
 script = ExtResource("13_pg2pt")
 
-[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(2)/Left femur" method="_on_character_body_3d_input_event"]
 [connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(1)/Right Femur" method="_on_character_body_3d_input_event"]
+[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(2)/Left femur" method="_on_character_body_3d_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Femur(1)" to="CharacterBody3D/Femur(1)/Right Femur" method="_on_area_3d_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Femur(2)" to="CharacterBody3D/Femur(2)/Left femur" method="_on_femur_2_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Head" to="CharacterBody3D/Head/Skull" method="_on_head_input_event"]

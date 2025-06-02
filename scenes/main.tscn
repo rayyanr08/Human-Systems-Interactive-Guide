@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0xr4hxr0fr0r"]
+[gd_scene load_steps=32 format=3 uid="uid://b0xr4hxr0fr0r"]
 
 [ext_resource type="ArrayMesh" uid="uid://b4htxst37egel" path="res://assets/BONES_OUT.OBJ" id="1_n2ck8"]
 [ext_resource type="Script" path="res://scripts/Right Femur.gd" id="2_ccgr0"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scripts/Right Ulna.gd" id="11_2w8dn"]
 [ext_resource type="Script" path="res://scripts/Right Radius.gd" id="12_q0778"]
 [ext_resource type="Script" path="res://scripts/Left Radius.gd" id="13_pg2pt"]
+[ext_resource type="Script" path="res://scripts/Left Ulna.gd" id="14_1da6s"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_w8gp7"]
 
@@ -68,6 +69,11 @@ height = 27.6164
 radius = 1.64071
 height = 23.225
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_s5f2c"]
+viewport_path = NodePath("Sprite3D/SubViewport")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fchr5"]
+
 [node name="main" type="Node3D"]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
@@ -78,7 +84,7 @@ mesh = ExtResource("1_n2ck8")
 skeleton = NodePath("../..")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
-transform = Transform3D(0.723558, 0, 0.690264, 0, 1, 0, -0.690264, 0, 0.723558, 200.308, 93.715, 207.508)
+transform = Transform3D(0.999762, 6.98584e-10, -0.0218325, 0.000707102, 0.999475, 0.03238, 0.021821, -0.0323877, 0.999237, -3.05692, 106.184, 295.665)
 attributes = SubResource("CameraAttributesPhysical_w8gp7")
 script = ExtResource("2_wo2kx")
 
@@ -180,6 +186,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 98, -17)
 [node name="Left Ulna" type="CollisionShape3D" parent="CharacterBody3D/Ulna(2)"]
 transform = Transform3D(0.966274, -0.249404, -0.0641291, 0.250197, 0.968184, 0.00452484, 0.0609602, -0.0204171, 0.997931, 1.09364, 1.2459, 1.05555)
 shape = SubResource("CapsuleShape3D_70f8w")
+script = ExtResource("14_1da6s")
 
 [node name="Radius(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 97, -15)
@@ -188,6 +195,32 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 97, -15)
 transform = Transform3D(0.963106, -0.269122, 0, 0.269121, 0.963103, 0.0026529, -0.000713952, -0.00255502, 0.999996, -1.39922, 2.69996, 0)
 shape = SubResource("CapsuleShape3D_23rvw")
 script = ExtResource("13_pg2pt")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.999363, 0, -0.0356844, -7.41143e-05, 0.999998, -0.00207562, 0.0356843, 0.00207694, 0.999361, 104.26, 132.304, -16.8585)
+pixel_size = 0.182
+texture = SubResource("ViewportTexture_s5f2c")
+
+[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+
+[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "SKULL
+RIGHT HUMERUS
+LEFT HUMERUS
+RIGHT RADIUS
+LEFT RADIUS
+RIGHT ULNA
+LEFT ULNA
+RIGHT FEMUR
+LEFT FEMUR
+RIGHT TIBIA
+LEFT TIBIA
+RIGHT FIBULA
+LEFT FIBULA"
+label_settings = SubResource("LabelSettings_fchr5")
+horizontal_alignment = 1
 
 [connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(1)/Right Femur" method="_on_character_body_3d_input_event"]
 [connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(2)/Left femur" method="_on_character_body_3d_input_event"]
@@ -202,4 +235,5 @@ script = ExtResource("13_pg2pt")
 [connection signal="input_event" from="CharacterBody3D/Humerus(2)" to="CharacterBody3D/Humerus(2)/Left Humerus" method="_on_humerus_2_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Ulna(1)" to="CharacterBody3D/Ulna(1)/Right Ulna" method="_on_ulna_1_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Radius(1)" to="CharacterBody3D/Radius(1)/Right Radius" method="_on_radius_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ulna(2)" to="CharacterBody3D/Ulna(2)/Left Ulna" method="_on_ulna_2_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Radius(2)" to="CharacterBody3D/Radius(2)/Left Radius" method="_on_radius_2_input_event"]

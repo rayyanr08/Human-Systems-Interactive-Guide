@@ -1,6 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://b0xr4hxr0fr0r"]
+[gd_scene load_steps=38 format=3 uid="uid://b0xr4hxr0fr0r"]
 
 [ext_resource type="ArrayMesh" uid="uid://b4htxst37egel" path="res://assets/BONES_OUT.OBJ" id="1_n2ck8"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_sdsej"]
 [ext_resource type="Script" path="res://scripts/Right Femur.gd" id="2_ccgr0"]
 [ext_resource type="Script" path="res://scripts/Camera3D.gd" id="2_wo2kx"]
 [ext_resource type="Script" path="res://scripts/Skull.gd" id="3_01wow"]
@@ -15,12 +16,14 @@
 [ext_resource type="Script" path="res://scripts/Right Radius.gd" id="12_q0778"]
 [ext_resource type="Script" path="res://scripts/Left Radius.gd" id="13_pg2pt"]
 [ext_resource type="Script" path="res://scripts/Left Ulna.gd" id="14_1da6s"]
+[ext_resource type="Script" path="res://scripts/Spine.gd" id="16_1n0pn"]
+[ext_resource type="Script" path="res://scripts/Sternum.gd" id="18_y5ql8"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_w8gp7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ma1fy"]
 radius = 2.0
-height = 44.0
+height = 41.3046
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bdq7x"]
 radius = 2.68674
@@ -69,12 +72,34 @@ height = 27.6164
 radius = 1.64071
 height = 23.225
 
+[sub_resource type="GDScript" id="GDScript_iju0u"]
+script/source = "extends Area3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ghnyv"]
+radius = 6.46414
+height = 66.8638
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5f2c"]
-viewport_path = NodePath("Sprite3D/SubViewport")
+viewport_path = NodePath("CharacterBody3D/InfoScreen/SubViewport")
 
 [sub_resource type="LabelSettings" id="LabelSettings_fchr5"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2e0sx"]
+radius = 1.713
+height = 19.8411
+
 [node name="main" type="Node3D"]
+script = ExtResource("1_sdsej")
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 
@@ -96,7 +121,7 @@ light_color = Color(0.981186, 0.894829, 0.88197, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 76, 0)
 
 [node name="Right Femur" type="CollisionShape3D" parent="CharacterBody3D/Femur(1)"]
-transform = Transform3D(0.998985, -0.0450491, 0, 0.0450491, 0.998985, 0, 0, 0, 1, -2.48315, -8.1788, -7.88307)
+transform = Transform3D(0.998985, -0.0450491, 2.06053e-09, 0.0446575, 0.990301, 0.131564, -0.00592685, -0.131431, 0.991308, -2.48315, -1.17699, -3.91835)
 shape = SubResource("CapsuleShape3D_ma1fy")
 script = ExtResource("2_ccgr0")
 
@@ -196,14 +221,23 @@ transform = Transform3D(0.963106, -0.269122, 0, 0.269121, 0.963103, 0.0026529, -
 shape = SubResource("CapsuleShape3D_23rvw")
 script = ExtResource("13_pg2pt")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Spine" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27652, 122, -14)
+script = SubResource("GDScript_iju0u")
+
+[node name="Spine" type="CollisionShape3D" parent="CharacterBody3D/Spine"]
+transform = Transform3D(0.999371, 0, 0.0354577, 0, 1, 0, -0.0354577, 0, 0.999371, 2.29927, 4.67379, 0.461216)
+shape = SubResource("CapsuleShape3D_ghnyv")
+script = ExtResource("16_1n0pn")
+
+[node name="InfoScreen" type="Sprite3D" parent="CharacterBody3D"]
 transform = Transform3D(0.999363, 0, -0.0356844, -7.41143e-05, 0.999998, -0.00207562, 0.0356843, 0.00207694, 0.999361, 104.26, 132.304, -16.8585)
 pixel_size = 0.182
 texture = SubResource("ViewportTexture_s5f2c")
 
-[node name="SubViewport" type="SubViewport" parent="Sprite3D"]
+[node name="SubViewport" type="SubViewport" parent="CharacterBody3D/InfoScreen"]
 
-[node name="Label" type="Label" parent="Sprite3D/SubViewport"]
+[node name="Label" type="Label" parent="CharacterBody3D/InfoScreen/SubViewport"]
 offset_right = 40.0
 offset_bottom = 23.0
 text = "SKULL
@@ -218,9 +252,21 @@ LEFT FEMUR
 RIGHT TIBIA
 LEFT TIBIA
 RIGHT FIBULA
-LEFT FIBULA"
+LEFT FIBULA
+SPINE"
 label_settings = SubResource("LabelSettings_fchr5")
 horizontal_alignment = 1
+
+[node name="Sternum" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 140, 0)
+
+[node name="Sternum" type="CollisionShape3D" parent="CharacterBody3D/Sternum"]
+transform = Transform3D(0.998144, 0.0608918, 0, -0.0608918, 0.998144, 0, 0, 0, 1, 0.036829, 2.40561, 2.87917)
+shape = SubResource("CapsuleShape3D_2e0sx")
+script = ExtResource("18_y5ql8")
+
+[node name="Ilium(1)" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 105, -10)
 
 [connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(1)/Right Femur" method="_on_character_body_3d_input_event"]
 [connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(2)/Left femur" method="_on_character_body_3d_input_event"]
@@ -237,3 +283,5 @@ horizontal_alignment = 1
 [connection signal="input_event" from="CharacterBody3D/Radius(1)" to="CharacterBody3D/Radius(1)/Right Radius" method="_on_radius_1_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Ulna(2)" to="CharacterBody3D/Ulna(2)/Left Ulna" method="_on_ulna_2_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Radius(2)" to="CharacterBody3D/Radius(2)/Left Radius" method="_on_radius_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Spine" to="CharacterBody3D/Spine/Spine" method="_on_spine_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Sternum" to="CharacterBody3D/Sternum/Sternum" method="_on_sternum_input_event"]

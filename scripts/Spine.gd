@@ -11,7 +11,7 @@ func _process(delta):
 	pass
 
 
-func _on_fibula_1_input_event(camera, event, position, normal, shape_idx):
+func _on_spine_input_event(camera, event, position, normal, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed == true:
-			get_node("/root/main").update_label("YOU CLICKED THE RIGHT FIBULA")
+			get_node("/root/main").update_label("YOU CLICKED THE SPINE")

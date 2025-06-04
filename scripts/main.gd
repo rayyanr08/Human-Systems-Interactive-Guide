@@ -1,5 +1,5 @@
 extends Node3D
-@onready var label_node := get_node("CharacterBody3D/Sprite3D/SubViewport/Label")
+@onready var label_node := get_node("CharacterBody3D/InfoScreen/SubViewport/Label")
 
 func update_label(new_text: String):
 	if label_node:

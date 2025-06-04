@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b0xr4hxr0fr0r"]
+[gd_scene load_steps=60 format=3 uid="uid://b0xr4hxr0fr0r"]
 
 [ext_resource type="ArrayMesh" uid="uid://b4htxst37egel" path="res://assets/BONES_OUT.OBJ" id="1_n2ck8"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_sdsej"]
@@ -18,6 +18,17 @@
 [ext_resource type="Script" path="res://scripts/Left Ulna.gd" id="14_1da6s"]
 [ext_resource type="Script" path="res://scripts/Spine.gd" id="16_1n0pn"]
 [ext_resource type="Script" path="res://scripts/Sternum.gd" id="18_y5ql8"]
+[ext_resource type="Script" path="res://scripts/Right Ilium.gd" id="19_ga2ii"]
+[ext_resource type="Script" path="res://scripts/Left Ilium.gd" id="20_lioyh"]
+[ext_resource type="Script" path="res://scripts/Longest(1).gd" id="21_x8y8v"]
+[ext_resource type="Script" path="res://scripts/Longest(2).gd" id="22_8ojca"]
+[ext_resource type="Script" path="res://scripts/Shortest(1).gd" id="23_ox7ft"]
+[ext_resource type="Script" path="res://scripts/Shortest(2).gd" id="24_2puhj"]
+[ext_resource type="Script" path="res://scripts/RightClavicle.gd" id="25_bhi22"]
+[ext_resource type="Script" path="res://scripts/LeftClavicle.gd" id="26_f5qhq"]
+[ext_resource type="Script" path="res://scripts/Teeth.gd" id="27_6aqx0"]
+[ext_resource type="Script" path="res://scripts/RightIschium.gd" id="28_gwi4l"]
+[ext_resource type="Script" path="res://scripts/LeftIschium.gd" id="29_sim56"]
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_w8gp7"]
 
@@ -86,7 +97,7 @@ func _process(delta):
 "
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ghnyv"]
-radius = 6.46414
+radius = 2.45627
 height = 66.8638
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s5f2c"]
@@ -97,6 +108,48 @@ viewport_path = NodePath("CharacterBody3D/InfoScreen/SubViewport")
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2e0sx"]
 radius = 1.713
 height = 19.8411
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqjc8"]
+size = Vector3(20.4999, 13.4847, 7.80276)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s0oel"]
+size = Vector3(9.78578, 10.563, 13.7665)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_m87mv"]
+radius = 0.814184
+height = 13.7022
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0gfmf"]
+radius = 0.841653
+height = 14.7945
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f3ppc"]
+radius = 1.08669
+height = 12.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wahoh"]
+radius = 1.0
+height = 14.0
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ab6h"]
+radius = 1.19844
+height = 20.7649
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsii2"]
+radius = 1.16023
+height = 19.4455
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j2m6j"]
+radius = 1.72992
+height = 10.6116
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_034wr"]
+height = 9.09691
+radius = 2.3943
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ca5jn"]
+height = 9.77551
+radius = 2.94215
 
 [node name="main" type="Node3D"]
 script = ExtResource("1_sdsej")
@@ -120,7 +173,7 @@ light_color = Color(0.981186, 0.894829, 0.88197, 1)
 [node name="Femur(1)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 76, 0)
 
-[node name="Right Femur" type="CollisionShape3D" parent="CharacterBody3D/Femur(1)"]
+[node name="RightFemur" type="CollisionShape3D" parent="CharacterBody3D/Femur(1)"]
 transform = Transform3D(0.998985, -0.0450491, 2.06053e-09, 0.0446575, 0.990301, 0.131564, -0.00592685, -0.131431, 0.991308, -2.48315, -1.17699, -3.91835)
 shape = SubResource("CapsuleShape3D_ma1fy")
 script = ExtResource("2_ccgr0")
@@ -128,7 +181,7 @@ script = ExtResource("2_ccgr0")
 [node name="Femur(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 
-[node name="Left femur" type="CollisionShape3D" parent="CharacterBody3D/Femur(2)"]
+[node name="LeftFemur" type="CollisionShape3D" parent="CharacterBody3D/Femur(2)"]
 transform = Transform3D(0.965926, 0.258807, -0.00252963, -0.258819, 0.965879, -0.00944081, 0, 0.00977361, 0.999952, 11.935, 77.3408, -5.05767)
 shape = SubResource("CapsuleShape3D_bdq7x")
 script = ExtResource("3_e6bxh")
@@ -144,7 +197,7 @@ script = ExtResource("3_01wow")
 [node name="Tibia(1)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 22, 0)
 
-[node name="Right Tibia" type="CollisionShape3D" parent="CharacterBody3D/Tibia(1)"]
+[node name="RightTibia" type="CollisionShape3D" parent="CharacterBody3D/Tibia(1)"]
 transform = Transform3D(0.999101, 0.0423988, 0, -0.0423988, 0.999101, 0, 0, 0, 1, -1.59095, 2.8872, -8.52784)
 shape = SubResource("CapsuleShape3D_pv4l2")
 script = ExtResource("5_cy7dt")
@@ -152,7 +205,7 @@ script = ExtResource("5_cy7dt")
 [node name="Fibula(1)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 18, -14)
 
-[node name="Right Fibula" type="CollisionShape3D" parent="CharacterBody3D/Fibula(1)"]
+[node name="RightFibula" type="CollisionShape3D" parent="CharacterBody3D/Fibula(1)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6051, 8.1762, 1.5432)
 shape = SubResource("CapsuleShape3D_tcbjj")
 script = ExtResource("6_cstts")
@@ -160,7 +213,7 @@ script = ExtResource("6_cstts")
 [node name="Tibia(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -21)
 
-[node name="Left Tibia" type="CollisionShape3D" parent="CharacterBody3D/Tibia(2)"]
+[node name="LeftTibia" type="CollisionShape3D" parent="CharacterBody3D/Tibia(2)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.67, 29.5802, 15.8495)
 shape = SubResource("CapsuleShape3D_v3luv")
 script = ExtResource("7_spej7")
@@ -168,7 +221,7 @@ script = ExtResource("7_spej7")
 [node name="Fibula(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 25, -10)
 
-[node name="Left Fibula" type="CollisionShape3D" parent="CharacterBody3D/Fibula(2)"]
+[node name="LeftFibula" type="CollisionShape3D" parent="CharacterBody3D/Fibula(2)"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147095, 0.420158, 0.253258)
 shape = SubResource("CapsuleShape3D_pbgct")
 script = ExtResource("8_mnc27")
@@ -176,7 +229,7 @@ script = ExtResource("8_mnc27")
 [node name="Humerus(1)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 128, -18)
 
-[node name="Right Humerus" type="CollisionShape3D" parent="CharacterBody3D/Humerus(1)"]
+[node name="RightHumerus" type="CollisionShape3D" parent="CharacterBody3D/Humerus(1)"]
 transform = Transform3D(0.959117, 0.283011, 0, -0.283011, 0.959117, 0, 0, 0, 1, 0, 1.04175, 6.05328)
 shape = SubResource("CapsuleShape3D_ms5nj")
 script = ExtResource("9_mov6e")
@@ -184,7 +237,7 @@ script = ExtResource("9_mov6e")
 [node name="Humerus(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23, 134, -16)
 
-[node name="Left Humerus" type="CollisionShape3D" parent="CharacterBody3D/Humerus(2)"]
+[node name="LeftHumerus" type="CollisionShape3D" parent="CharacterBody3D/Humerus(2)"]
 transform = Transform3D(0.965926, -0.258819, 0, 0.25, 0.933013, -0.258819, 0.0669873, 0.25, 0.965926, 0, -3, 1)
 shape = SubResource("CapsuleShape3D_uw11m")
 script = ExtResource("10_qdf27")
@@ -192,7 +245,7 @@ script = ExtResource("10_qdf27")
 [node name="Ulna(1)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2559, 103, -18)
 
-[node name="Right Ulna" type="CollisionShape3D" parent="CharacterBody3D/Ulna(1)"]
+[node name="RightUlna" type="CollisionShape3D" parent="CharacterBody3D/Ulna(1)"]
 transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, -0.552776, -3, 2)
 shape = SubResource("CapsuleShape3D_4g8sc")
 script = ExtResource("11_2w8dn")
@@ -200,7 +253,7 @@ script = ExtResource("11_2w8dn")
 [node name="Radius(1)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.348, 100.942, -15.0705)
 
-[node name="Right Radius" type="CollisionShape3D" parent="CharacterBody3D/Radius(1)"]
+[node name="RightRadius" type="CollisionShape3D" parent="CharacterBody3D/Radius(1)"]
 transform = Transform3D(0.959344, 0.282241, 0, -0.282241, 0.959344, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_362bm")
 script = ExtResource("12_q0778")
@@ -208,7 +261,7 @@ script = ExtResource("12_q0778")
 [node name="Ulna(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31, 98, -17)
 
-[node name="Left Ulna" type="CollisionShape3D" parent="CharacterBody3D/Ulna(2)"]
+[node name="LeftUlna" type="CollisionShape3D" parent="CharacterBody3D/Ulna(2)"]
 transform = Transform3D(0.966274, -0.249404, -0.0641291, 0.250197, 0.968184, 0.00452484, 0.0609602, -0.0204171, 0.997931, 1.09364, 1.2459, 1.05555)
 shape = SubResource("CapsuleShape3D_70f8w")
 script = ExtResource("14_1da6s")
@@ -216,7 +269,7 @@ script = ExtResource("14_1da6s")
 [node name="Radius(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36, 97, -15)
 
-[node name="Left Radius" type="CollisionShape3D" parent="CharacterBody3D/Radius(2)"]
+[node name="LeftRadius" type="CollisionShape3D" parent="CharacterBody3D/Radius(2)"]
 transform = Transform3D(0.963106, -0.269122, 0, 0.269121, 0.963103, 0.0026529, -0.000713952, -0.00255502, 0.999996, -1.39922, 2.69996, 0)
 shape = SubResource("CapsuleShape3D_23rvw")
 script = ExtResource("13_pg2pt")
@@ -226,7 +279,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.27652, 122, -14)
 script = SubResource("GDScript_iju0u")
 
 [node name="Spine" type="CollisionShape3D" parent="CharacterBody3D/Spine"]
-transform = Transform3D(0.999371, 0, 0.0354577, 0, 1, 0, -0.0354577, 0, 0.999371, 2.29927, 4.67379, 0.461216)
+transform = Transform3D(0.999371, 0, 0.0354577, 0, 1, 0, -0.0354577, 0, 0.999371, 2.29927, 7.34271, 0.461216)
 shape = SubResource("CapsuleShape3D_ghnyv")
 script = ExtResource("16_1n0pn")
 
@@ -240,11 +293,11 @@ texture = SubResource("ViewportTexture_s5f2c")
 [node name="Label" type="Label" parent="CharacterBody3D/InfoScreen/SubViewport"]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "SKULL
-RIGHT HUMERUS
-LEFT HUMERUS
-RIGHT RADIUS
-LEFT RADIUS
+text = "SKULL           RIGHT CLAVICLE     
+RIGHT HUMERUS   LEFT CLAVICLE 
+LEFT HUMERUS          TEETH
+RIGHT RADIUS   RIGHT ISCHIUM
+LEFT RADIUS          LEFT ISCHIUM
 RIGHT ULNA
 LEFT ULNA
 RIGHT FEMUR
@@ -253,7 +306,12 @@ RIGHT TIBIA
 LEFT TIBIA
 RIGHT FIBULA
 LEFT FIBULA
-SPINE"
+SPINE
+STERNUM
+RIGHT ILIUM
+LEFT ILUM
+FALSE RIBS
+"
 label_settings = SubResource("LabelSettings_fchr5")
 horizontal_alignment = 1
 
@@ -265,23 +323,109 @@ transform = Transform3D(0.998144, 0.0608918, 0, -0.0608918, 0.998144, 0, 0, 0, 1
 shape = SubResource("CapsuleShape3D_2e0sx")
 script = ExtResource("18_y5ql8")
 
-[node name="Ilium(1)" type="Area3D" parent="CharacterBody3D"]
+[node name="Ilium(2)" type="Area3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 105, -10)
 
-[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(1)/Right Femur" method="_on_character_body_3d_input_event"]
-[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(2)/Left femur" method="_on_character_body_3d_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Femur(1)" to="CharacterBody3D/Femur(1)/Right Femur" method="_on_area_3d_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Femur(2)" to="CharacterBody3D/Femur(2)/Left femur" method="_on_femur_2_input_event"]
+[node name="LeftIlium" type="CollisionShape3D" parent="CharacterBody3D/Ilium(2)"]
+transform = Transform3D(0.00479966, 0, 0.999988, 0, 1, 0, -0.999988, 0, 0.00479966, 0.233935, -2.26977, -1.68696)
+shape = SubResource("BoxShape3D_xqjc8")
+script = ExtResource("19_ga2ii")
+
+[node name="Ilium(1)" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.742, 106.409, 0)
+
+[node name="RightIlium" type="CollisionShape3D" parent="CharacterBody3D/Ilium(1)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.47233, -2.03885, -7.825)
+shape = SubResource("BoxShape3D_s0oel")
+script = ExtResource("20_lioyh")
+
+[node name="FalseRibs(1)" type="Area3D" parent="CharacterBody3D"]
+
+[node name="Longest(1)" type="CollisionShape3D" parent="CharacterBody3D/FalseRibs(1)"]
+transform = Transform3D(0.745728, 0.544049, -0.38458, 0.0403401, 0.5393, 0.841147, 0.665029, -0.642781, 0.380224, -6.60968, 119.133, -9.22809)
+shape = SubResource("CapsuleShape3D_m87mv")
+script = ExtResource("21_x8y8v")
+
+[node name="Longest(2)" type="CollisionShape3D" parent="CharacterBody3D/FalseRibs(1)"]
+transform = Transform3D(0.727426, -0.686187, 0, 0.615856, 0.652868, 0.441005, -0.302612, -0.320798, 0.897505, 6.987, 118.786, -10.0568)
+shape = SubResource("CapsuleShape3D_0gfmf")
+script = ExtResource("22_8ojca")
+
+[node name="Shortest(1)" type="CollisionShape3D" parent="CharacterBody3D/FalseRibs(1)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.23291, 114.73, -8.33002)
+shape = SubResource("CapsuleShape3D_f3ppc")
+script = ExtResource("23_ox7ft")
+
+[node name="Shortest(2)" type="CollisionShape3D" parent="CharacterBody3D/FalseRibs(1)"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 114, -9)
+shape = SubResource("CapsuleShape3D_wahoh")
+script = ExtResource("24_2puhj")
+
+[node name="Clavicle(1)" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.94489, 151.133, -6.66851)
+
+[node name="RightClavicle" type="CollisionShape3D" parent="CharacterBody3D/Clavicle(1)"]
+transform = Transform3D(0.0227397, 0.999741, 0, -0.999741, 0.0227397, 0, 0, 0, 1, -6.07306, -0.699158, -0.46035)
+shape = SubResource("CapsuleShape3D_1ab6h")
+script = ExtResource("25_bhi22")
+
+[node name="Clavicle(2)" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 150, -7)
+
+[node name="LeftClavicle" type="CollisionShape3D" parent="CharacterBody3D/Clavicle(2)"]
+transform = Transform3D(0.0487627, 0.99881, 0, -0.992558, 0.0484574, -0.111712, -0.111579, 0.00544736, 0.993741, 6.23111, 0.756424, 2.29489)
+shape = SubResource("CapsuleShape3D_tsii2")
+script = ExtResource("26_f5qhq")
+
+[node name="OralCavity" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 164.707, -1.8035)
+
+[node name="Teeth" type="CollisionShape3D" parent="CharacterBody3D/OralCavity"]
+transform = Transform3D(-0.29521, -0.954439, -0.0435464, 0.355327, -0.0673666, -0.932311, 0.886901, -0.290701, 0.359026, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_j2m6j")
+script = ExtResource("27_6aqx0")
+
+[node name="Ischium(1)" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 88, -9)
+
+[node name="RightIschium" type="CollisionShape3D" parent="CharacterBody3D/Ischium(1)"]
+transform = Transform3D(0.200582, -0.979677, 0, 0.979677, 0.200582, 0, 0, 0, 1, 1.30205, 0.858223, -1.65933)
+shape = SubResource("CylinderShape3D_034wr")
+script = ExtResource("28_gwi4l")
+
+[node name="Ischium(2)" type="Area3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.66267, 87.465, -12.7454)
+
+[node name="LeftIschium" type="CollisionShape3D" parent="CharacterBody3D/Ischium(2)"]
+transform = Transform3D(-0.112284, 0.993676, 0, -0.993676, -0.112284, 0, 0, 0, 1, -0.0643859, 0.543633, 2.16033)
+shape = SubResource("CylinderShape3D_ca5jn")
+script = ExtResource("29_sim56")
+
+[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(1)/RightFemur" method="_on_character_body_3d_input_event"]
+[connection signal="input_event" from="CharacterBody3D" to="CharacterBody3D/Femur(2)/LeftFemur" method="_on_character_body_3d_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Femur(1)" to="CharacterBody3D/Femur(1)/RightFemur" method="_on_area_3d_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Femur(2)" to="CharacterBody3D/Femur(2)/LeftFemur" method="_on_femur_2_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Head" to="CharacterBody3D/Head/Skull" method="_on_head_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Tibia(1)" to="CharacterBody3D/Tibia(1)/Right Tibia" method="_on_tibia_1_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Fibula(1)" to="CharacterBody3D/Fibula(1)/Right Fibula" method="_on_fibula_1_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Tibia(2)" to="CharacterBody3D/Tibia(2)/Left Tibia" method="_on_tibia_2_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Fibula(2)" to="CharacterBody3D/Fibula(2)/Left Fibula" method="_on_fibula_2_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Humerus(1)" to="CharacterBody3D/Humerus(1)/Right Humerus" method="_on_humerus_1_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Humerus(2)" to="CharacterBody3D/Humerus(2)/Left Humerus" method="_on_humerus_2_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Ulna(1)" to="CharacterBody3D/Ulna(1)/Right Ulna" method="_on_ulna_1_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Radius(1)" to="CharacterBody3D/Radius(1)/Right Radius" method="_on_radius_1_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Ulna(2)" to="CharacterBody3D/Ulna(2)/Left Ulna" method="_on_ulna_2_input_event"]
-[connection signal="input_event" from="CharacterBody3D/Radius(2)" to="CharacterBody3D/Radius(2)/Left Radius" method="_on_radius_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Tibia(1)" to="CharacterBody3D/Tibia(1)/RightTibia" method="_on_tibia_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Fibula(1)" to="CharacterBody3D/Fibula(1)/RightFibula" method="_on_fibula_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Tibia(2)" to="CharacterBody3D/Tibia(2)/LeftTibia" method="_on_tibia_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Fibula(2)" to="CharacterBody3D/Fibula(2)/LeftFibula" method="_on_fibula_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Humerus(1)" to="CharacterBody3D/Humerus(1)/RightHumerus" method="_on_humerus_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Humerus(2)" to="CharacterBody3D/Humerus(2)/LeftHumerus" method="_on_humerus_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ulna(1)" to="CharacterBody3D/Ulna(1)/RightUlna" method="_on_ulna_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Radius(1)" to="CharacterBody3D/Radius(1)/RightRadius" method="_on_radius_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ulna(2)" to="CharacterBody3D/Ulna(2)/LeftUlna" method="_on_ulna_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Radius(2)" to="CharacterBody3D/Radius(2)/LeftRadius" method="_on_radius_2_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Spine" to="CharacterBody3D/Spine/Spine" method="_on_spine_input_event"]
 [connection signal="input_event" from="CharacterBody3D/Sternum" to="CharacterBody3D/Sternum/Sternum" method="_on_sternum_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ilium(2)" to="CharacterBody3D/Ilium(2)/LeftIlium" method="_on_ilium_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ilium(1)" to="CharacterBody3D/Ilium(1)/RightIlium" method="_on_ilium_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/FalseRibs(1)" to="CharacterBody3D/FalseRibs(1)/Longest(1)" method="_on_false_ribs_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/FalseRibs(1)" to="CharacterBody3D/FalseRibs(1)/Longest(2)" method="_on_false_ribs_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/FalseRibs(1)" to="CharacterBody3D/FalseRibs(1)/Shortest(1)" method="_on_false_ribs_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/FalseRibs(1)" to="CharacterBody3D/FalseRibs(1)/Shortest(2)" method="_on_false_ribs_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Clavicle(1)" to="CharacterBody3D/Clavicle(1)/RightClavicle" method="_on_clavicle_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Clavicle(2)" to="CharacterBody3D/Clavicle(2)/LeftClavicle" method="_on_clavicle_2_input_event"]
+[connection signal="input_event" from="CharacterBody3D/OralCavity" to="CharacterBody3D/OralCavity/Teeth" method="_on_oral_cavity_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ischium(1)" to="CharacterBody3D/Ischium(1)/RightIschium" method="_on_ischium_1_input_event"]
+[connection signal="input_event" from="CharacterBody3D/Ischium(2)" to="CharacterBody3D/Ischium(2)/LeftIschium" method="_on_ischium_2_input_event"]
